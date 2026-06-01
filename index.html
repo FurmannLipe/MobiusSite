@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Möbius — Móveis planejados sob medida em MDF, do projeto à instalação. Atendemos residencial e comercial em Curitiba.">
+  <title>Möbius — Móveis Sob Medida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lc2WgYtAAAAAO7ogXWaCFEO2RRn3mpumhZgNvRN"></script>
+  <style>
+    /* ── VARIÁVEIS ────────────────────────────── */
+    :root {
+      --papel: #F3EFE7;
+      --nogueira: #3C2A1D;
+      --musgo: #5A6B3B;
+      --tinta: #1A1714;
+      --mel: #C89B6A;
+      --caramelo: #9A6A3C;
+      --papel-escuro: #EAE5DC;
+
+      --jost: 'Jost', sans-serif;
+      --manrope: 'Manrope', sans-serif;
+      --grotesk: 'Space Grotesk', sans-serif;
+
+      --max: 1160px;
+      --pad: clamp(24px, 5vw, 80px);
+    }
+
+    /* ── RESET ────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--manrope);
+      background: var(--papel);
+      color: var(--tinta);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ──────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--papel);
+      border-bottom: 1px solid rgba(60, 42, 29, 0.1);
+      padding: 0 var(--pad);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--grotesk);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(26, 23, 20, 0.6);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--tinta); }
+
+    .nav-cta {
+      font-family: var(--grotesk);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--papel);
+      background: var(--nogueira);
+      padding: 10px 22px;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--musgo); }
+
+    /* ── HERO ─────────────────────────────────── */
+    #inicio {
+      background: var(--nogueira);
+      min-height: 100vh;
+      padding: 120px var(--pad) 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-symbol {
+      position: absolute;
+      right: -8%;
+      top: 50%;
+      transform: translateY(-50%);
+      height: clamp(400px, 72vh, 700px);
+      width: auto;
+      opacity: 0.13;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-bg-symbol img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--grotesk);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--musgo);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: var(--jost);
+      font-size: clamp(56px, 9vw, 128px);
+      font-weight: 400;
+      color: var(--papel);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+      max-width: 800px;
+    }
+
+    .hero-sub {
+      font-family: var(--manrope);
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 400;
+      color: rgba(243, 239, 231, 0.6);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 52px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--grotesk);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--nogueira);
+      background: var(--papel);
+      padding: 16px 32px;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--musgo);
+      color: var(--papel);
+    }
+
+    .btn-ghost {
+      font-family: var(--grotesk);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(243, 239, 231, 0.5);
+      border-bottom: 1px solid rgba(243, 239, 231, 0.25);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      color: var(--papel);
+      border-color: var(--papel);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: var(--pad);
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(243, 239, 231, 0.3);
+      writing-mode: vertical-rl;
+    }
+
+    /* ── SEÇÃO GENÉRICA ───────────────────────── */
+    section {
+      padding: clamp(72px, 10vw, 128px) var(--pad);
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--musgo);
+      margin-bottom: 20px;
+    }
+
+    .section-headline {
+      font-family: var(--jost);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--tinta);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+    }
+
+    /* ── SOBRE ────────────────────────────────── */
+    #sobre {
+      background: var(--papel);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 64px;
+    }
+
+    .sobre-text p {
+      font-size: clamp(15px, 1.5vw, 17px);
+      font-weight: 400;
+      color: rgba(26, 23, 20, 0.75);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .sobre-text p:last-child { margin-bottom: 0; }
+
+    .sobre-diferenciais {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .diferencial {
+      padding: 24px 28px;
+      border-left: 2px solid var(--mel);
+      background: rgba(200, 155, 106, 0.07);
+    }
+
+    .diferencial-label {
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--caramelo);
+      margin-bottom: 7px;
+    }
+
+    .diferencial-text {
+      font-family: var(--manrope);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--tinta);
+      line-height: 1.5;
+    }
+
+    /* ── SERVIÇOS ─────────────────────────────── */
+    #servicos {
+      background: var(--nogueira);
+    }
+
+    #servicos .eyebrow { color: var(--musgo); }
+
+    #servicos .section-headline { color: var(--papel); }
+
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .servico-card {
+      background: rgba(243, 239, 231, 0.04);
+      border: 1px solid rgba(243, 239, 231, 0.08);
+      padding: 36px 32px;
+      transition: background 0.25s;
+    }
+
+    .servico-card:hover {
+      background: rgba(90, 107, 59, 0.15);
+    }
+
+    .servico-num {
+      font-family: var(--grotesk);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--musgo);
+      letter-spacing: 0.18em;
+      margin-bottom: 20px;
+    }
+
+    .servico-nome {
+      font-family: var(--jost);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--papel);
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .servico-desc {
+      font-family: var(--manrope);
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(243, 239, 231, 0.5);
+      line-height: 1.65;
+    }
+
+    /* ── PORTFÓLIO ────────────────────────────── */
+    #portfolio {
+      background: var(--papel-escuro);
+    }
+
+    .portfolio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-link {
+      font-family: var(--grotesk);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--caramelo);
+      border-bottom: 1px solid rgba(154, 106, 60, 0.35);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .portfolio-link:hover { color: var(--musgo); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: rgba(60, 42, 29, 0.1);
+      cursor: pointer;
+    }
+
+    /* SUBSTITUIR: quando tiver as fotos, adicionar <img src="assets/projeto-N.jpg" alt="..."> dentro de .portfolio-item */
+    .portfolio-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(60,42,29,0.08) 0%, rgba(200,155,106,0.12) 100%);
+    }
+
+    .portfolio-placeholder-icon {
+      font-family: var(--jost);
+      font-size: 48px;
+      font-weight: 300;
+      color: rgba(60, 42, 29, 0.15);
+    }
+
+    .portfolio-item-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(60,42,29,0.85) 0%, transparent 100%);
+      padding: 24px 24px 20px;
+      transform: translateY(8px);
+      transition: transform 0.3s;
+    }
+
+    .portfolio-item:hover .portfolio-item-overlay {
+      transform: translateY(0);
+    }
+
+    .portfolio-item-label {
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--musgo);
+      margin-bottom: 5px;
+    }
+
+    .portfolio-item-nome {
+      font-family: var(--jost);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--papel);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── CONTATO ──────────────────────────────── */
+    #contato {
+      background: var(--papel);
+    }
+
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 56px;
+    }
+
+    .contato-intro {
+      font-family: var(--manrope);
+      font-size: clamp(15px, 1.5vw, 17px);
+      font-weight: 400;
+      color: rgba(26, 23, 20, 0.65);
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+
+    .contato-canais {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .canal {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(60, 42, 29, 0.04);
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .canal:hover {
+      border-color: var(--musgo);
+      background: rgba(90, 107, 59, 0.06);
+    }
+
+    .canal-label {
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--caramelo);
+      min-width: 80px;
+    }
+
+    .canal-value {
+      font-family: var(--manrope);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--tinta);
+    }
+
+    .contato-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--grotesk);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--papel);
+      background: var(--musgo);
+      padding: 18px 36px;
+      margin-top: 32px;
+      transition: background 0.2s;
+    }
+
+    .contato-wpp:hover { background: var(--nogueira); }
+
+    .contato-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-label {
+      font-family: var(--grotesk);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--caramelo);
+    }
+
+    .form-input,
+    .form-textarea {
+      font-family: var(--manrope);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--tinta);
+      background: rgba(60, 42, 29, 0.05);
+      border: 1px solid rgba(60, 42, 29, 0.12);
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+      width: 100%;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--musgo);
+    }
+
+    .form-textarea { min-height: 120px; }
+
+    .grecaptcha-badge { visibility: hidden !important; }
+
+  .recaptcha-notice {
+    font-family: var(--grotesk);
+    font-size: 10px;
+    color: rgba(26, 23, 20, 0.35);
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .recaptcha-notice a {
+    color: rgba(26, 23, 20, 0.45);
+    text-decoration: underline;
+  }
+
+  .form-submit {
+      font-family: var(--grotesk);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--papel);
+      background: var(--nogueira);
+      border: none;
+      padding: 16px 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { background: var(--musgo); }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      background: var(--nogueira);
+      padding: 40px var(--pad);
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.8;
+    }
+
+    .footer-tagline {
+      font-family: var(--jost);
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(243, 239, 231, 0.35);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-copy {
+      font-family: var(--grotesk);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(243, 239, 231, 0.3);
+    }
+
+    /* ── RESPONSIVO ───────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+
+      .sobre-grid,
+      .contato-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .portfolio-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .servicos-grid,
+      .portfolio-grid { grid-template-columns: 1fr; }
+
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────── -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <img src="assets/logo-wordmark.png" alt="Möbius">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/5541992759575?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20M%C3%B6bius%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="nav-cta">Orçamento</a>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────── -->
+<section id="inicio">
+  <div class="hero-bg-symbol">
+    <img src="assets/logo-symbol.png" alt="">
+  </div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Möbius · Móveis sob medida · Curitiba</p>
+    <h1 class="hero-headline">Uma<br>peça só.</h1>
+    <p class="hero-sub">Do projeto à entrega, cada ambiente ganha móveis pensados para durar — com a precisão de quem projeta e acompanha cada etapa de ponta a ponta.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5541992759575?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20M%C3%B6bius%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="btn-primary">Solicitar orçamento</a>
+      <a href="#portfolio" class="btn-ghost">Ver projetos</a>
+    </div>
+  </div>
+  <span class="hero-scroll">Role para baixo</span>
+</section>
+
+<!-- ── SOBRE ─────────────────────────────────── -->
+<section id="sobre">
+  <div class="section-inner">
+    <p class="eyebrow">Sobre</p>
+    <h2 class="section-headline">Arquitetura<br>aplicada ao móvel.</h2>
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <p>A Möbius surgiu da convicção de que o móvel planejado deve ter o mesmo rigor do projeto de arquitetura — não apenas caber no ambiente, mas completá-lo.</p>
+        <p>Aqui você fala diretamente com quem projeta, orça e acompanha cada etapa — da modelagem à instalação. Sem surpresas no final.</p>
+        <p>Trabalhamos com MDF de linha completa — do básico ao alto padrão — e atendemos residencial e comercial em Curitiba e região.</p>
+      </div>
+      <div class="sobre-diferenciais">
+        <div class="diferencial">
+          <p class="diferencial-label">Projeto incluso</p>
+          <p class="diferencial-text">Modelagem 3D do ambiente antes de qualquer número. Você vê o resultado antes de decidir.</p>
+        </div>
+        <div class="diferencial">
+          <p class="diferencial-label">Atendimento direto</p>
+          <p class="diferencial-text">Do primeiro contato à entrega, você fala com o mesmo profissional. Sem repassar informação duas vezes.</p>
+        </div>
+        <div class="diferencial">
+          <p class="diferencial-label">Parceria com arquitetos</p>
+          <p class="diferencial-text">Executamos projetos de terceiros com fidelidade técnica ao memorial descritivo e às elevações.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVIÇOS ───────────────────────────────── -->
+<section id="servicos">
+  <div class="section-inner">
+    <p class="eyebrow">Serviços</p>
+    <h2 class="section-headline">O que fazemos.</h2>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <p class="servico-num">01</p>
+        <h3 class="servico-nome">Guarda-roupas e closets</h3>
+        <p class="servico-desc">Projetos piso a teto com organização personalizada — gavetas, cabideiros, calçadeiras e nichos no layout que faz sentido pra você.</p>
+      </div>
+      <div class="servico-card">
+        <p class="servico-num">02</p>
+        <h3 class="servico-nome">Cozinhas planejadas</h3>
+        <p class="servico-desc">Bancadas, aéreos e balcões integrados ao layout da cozinha. Acabamentos que resistem ao uso diário sem abrir mão da estética.</p>
+      </div>
+      <div class="servico-card">
+        <p class="servico-num">03</p>
+        <h3 class="servico-nome">Home offices</h3>
+        <p class="servico-desc">Bancadas, estantes e painéis projetados pra trabalhar bem — com organização de cabos, iluminação e o espaço exato para o que você precisa.</p>
+      </div>
+      <div class="servico-card">
+        <p class="servico-num">04</p>
+        <h3 class="servico-nome">Áreas de serviço e banheiros</h3>
+        <p class="servico-desc">Armários e gabinetes que aproveitam cada centímetro dos ambientes menores, com materiais adequados à umidade.</p>
+      </div>
+      <div class="servico-card">
+        <p class="servico-num">05</p>
+        <h3 class="servico-nome">Ambientes comerciais</h3>
+        <p class="servico-desc">Recepções, salas de reunião, showrooms e lojas. Produção em escala com o mesmo controle de qualidade do residencial.</p>
+      </div>
+      <div class="servico-card">
+        <p class="servico-num">06</p>
+        <h3 class="servico-nome">Madeira maciça</h3>
+        <p class="servico-desc">Peças únicas em madeira natural — mesas, tampos, prateleiras e detalhes que pedem o caráter e a textura que só a madeira maciça tem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFÓLIO ──────────────────────────────── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="portfolio-header">
+      <div>
+        <p class="eyebrow">Portfólio</p>
+        <h2 class="section-headline">Projetos realizados.</h2>
+      </div>
+      <a href="https://www.instagram.com/mobius.marcenaria" target="_blank" class="portfolio-link">Ver mais no Instagram</a>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="portfolio-item">
+        <img src="assets/projeto-1.jpg" alt="Cozinha planejada amadeirada com sala integrada — Möbius Marcenaria">
+        <div class="portfolio-item-overlay">
+          <p class="portfolio-item-label">Cozinha · Curitiba</p>
+          <p class="portfolio-item-nome">Cozinha integrada</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="assets/projeto-2.jpg" alt="Painel de TV e rack sob medida — Möbius Marcenaria">
+        <div class="portfolio-item-overlay">
+          <p class="portfolio-item-label">Sala · Curitiba</p>
+          <p class="portfolio-item-nome">Painel e rack</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="assets/projeto-3.jpg" alt="Guarda-roupa sob medida — Möbius Marcenaria">
+        <div class="portfolio-item-overlay">
+          <p class="portfolio-item-label">Quarto · Curitiba</p>
+          <p class="portfolio-item-nome">Guarda-roupa</p>
+        </div>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="assets/projeto-4.jpg" alt="Cozinha preta com bancada amadeirada — Möbius Marcenaria">
+        <div class="portfolio-item-overlay">
+          <p class="portfolio-item-label">Área gourmet · Curitiba</p>
+          <p class="portfolio-item-nome">Cozinha em preto</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTATO ────────────────────────────────── -->
+<section id="contato">
+  <div class="section-inner">
+    <p class="eyebrow">Contato</p>
+    <h2 class="section-headline">Vamos conversar.</h2>
+    <div class="contato-grid">
+      <div>
+        <p class="contato-intro">Manda uma mensagem pelo WhatsApp ou pelo formulário ao lado. Retornamos em até 24h com as primeiras perguntas sobre o seu projeto.</p>
+        <div class="contato-canais">
+          <a href="tel:+5541992759575" class="canal">
+            <span class="canal-label">Telefone</span>
+            <span class="canal-value">(41) 99275-9575</span>
+          </a>
+          <a href="mailto:contato@mobiusmoveis.com.br" class="canal">
+            <span class="canal-label">Email</span>
+            <span class="canal-value">contato@mobiusmoveis.com.br</span>
+          </a>
+          <a href="https://www.instagram.com/mobius.marcenaria" target="_blank" class="canal">
+            <span class="canal-label">Instagram</span>
+            <span class="canal-value">@mobius.marcenaria</span>
+          </a>
+        </div>
+        <a href="https://wa.me/5541992759575?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20M%C3%B6bius%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="contato-wpp">
+          Falar pelo WhatsApp
+        </a>
+      </div>
+      <form class="contato-form" id="contatoForm" action="https://formspree.io/f/mgoqjalw" method="POST">
+        <input type="hidden" name="g-recaptcha-response" id="recaptchaToken">
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome</label>
+          <input class="form-input" type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ambiente">Ambiente</label>
+          <input class="form-input" type="text" id="ambiente" name="ambiente" placeholder="Ex: cozinha, quarto, escritório">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mensagem">Mensagem</label>
+          <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Conta um pouco sobre o que você precisa"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar mensagem</button>
+        <p class="recaptcha-notice">Protegido por reCAPTCHA — <a href="https://policies.google.com/privacy" target="_blank">Privacidade</a> e <a href="https://policies.google.com/terms" target="_blank">Termos</a> Google.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="assets/logo-wordmark-light.png" alt="Möbius"></div>
+    <span class="footer-tagline">Uma peça só.</span>
+    <span class="footer-copy">© 2026 · Curitiba, PR</span>
+  </div>
+</footer>
+
+<!-- ── BACK TO TOP ───────────────────────────────── -->
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 13V3M3 8L8 3L13 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: var(--nogueira);
+    color: var(--papel);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    pointer-events: none;
+    z-index: 99;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    background: var(--musgo);
+  }
+
+  @media (max-width: 600px) {
+    .back-to-top { bottom: 20px; right: 20px; }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 120);
+  }, { passive: true });
+
+  document.getElementById('contatoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6Lc2WgYtAAAAAO7ogXWaCFEO2RRn3mpumhZgNvRN', { action: 'contact' }).then(function(token) {
+        document.getElementById('recaptchaToken').value = token;
+        form.submit();
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
